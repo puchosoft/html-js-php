@@ -88,7 +88,7 @@
 					$_SESSION['cuentaUsuario'] = $_POST['cuentaUsuario'];
 					$_SESSION['sesionValida'] = true;
 					$_SESSION['tiempoVida'] = time() + 3600;
-					// var_dump ($_SESSION);
+					var_dump ($_SESSION);
 					$msg = 'Sesion abierta.';
                }else {
                   $msg = 'Cuenta o clave incorrecta.';
