@@ -1,7 +1,7 @@
 <?php
    include("configuraDB.php"); // Configura la conexion a la BD
    session_start();
-   $error = "No hay sesiones abiertas";
+   $error = "No hay sesion abierta.";
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       
@@ -22,7 +22,7 @@
          $_SESSION['usuario_login'] = $mi_usuario; // Abre sesion 
          header("location: index.php"); // Vuelve a la pagina principal
       }else {
-         $error = "Su Usuario y Clave son invalidas";
+         $error = "Usuario o clave invalidas";
       }
    }
 ?>
@@ -59,8 +59,8 @@
             <div style = "margin:30px">
                
                <form action = "" method = "post">
-                  <label>Usuario:	</label><input type = "text" name = "usuario" class = "box"/><br /><br />
-                  <label>Clave:		</label><input type = "password" name = "clave" class = "box" /><br/><br />
+                  <label>Usuario:	</label><br><input type = "text" name = "usuario" class = "box"/><br /><br />
+                  <label>Clave:		</label><br><input type = "password" name = "clave" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
                
