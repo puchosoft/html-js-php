@@ -1,36 +1,35 @@
 <?php
-   include("config.php");
+   include("configuraDB.php"); // Configura la conexion a la BD
    session_start();
+   $error = "No hay sesiones abiertas";
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
       
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+	  // usuario y clave enviados desde el formulario 
+      $mi_usuario = mysqli_real_escape_string($db,$_POST['usuario']);
+      $mi_clave = mysqli_real_escape_string($db,$_POST['clave']); 
       
-      $sql = "SELECT id FROM cuentas WHERE usuario = '$myusername' and clave = md5('$mypassword')";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      // $active = $row['active'];
+      // Lee de la BD la columna 'id' del registro que coincide el usuario y clave
+	  $query = "SELECT id FROM cuentas WHERE usuario = '$mi_usuario' and clave = md5('$mi_clave')";
+      $resultado = mysqli_query($db,$query);
+      $registro = mysqli_fetch_array($resultado,MYSQLI_ASSOC);
       
-      $count = mysqli_num_rows($result);
+      $cuenta = mysqli_num_rows($resultado); // Numero de registros devueltos
       
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         //session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
-         
-         header("location: welcome.php");
+      // Si el resultado coincide con $mi_usuario y $mi_clave, la tabla registro deberia tener 1 linea
+      if($cuenta == 1) {
+
+         $_SESSION['usuario_login'] = $mi_usuario; // Abre sesion 
+         header("location: index.php"); // Vuelve a la pagina principal
       }else {
-         $error = "Your Login Name or Password is invalid";
+         $error = "Su Usuario y Clave son invalidas";
       }
    }
 ?>
 <html>
    
    <head>
-      <title>Login Page</title>
+      <title>Pagina de Ingreso</title>
       
       <style type = "text/css">
          body {
@@ -60,8 +59,8 @@
             <div style = "margin:30px">
                
                <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <label>Usuario:	</label><input type = "text" name = "usuario" class = "box"/><br /><br />
+                  <label>Clave:		</label><input type = "password" name = "clave" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
                
