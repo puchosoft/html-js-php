@@ -1,11 +1,11 @@
 <?php
    // Verifica si hay sesion abierta
-   include('sesion.php'); // Verifica si hay sesion abierta
+   include('sesion.php');
 ?>
 
 <html>
 <head>
-	<title>Pagina Publica</title>
+	<title>Pagina Privada</title>
 </head>
 <body>
 
