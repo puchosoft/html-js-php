@@ -1,4 +1,7 @@
-
+<?php
+   // Verifica si hay sesion abierta
+   include('sesion.php'); // Verifica si hay sesion abierta
+?>
 
 <html>
 <head>
@@ -7,7 +10,7 @@
 <body>
 
 <?php
-include("encabezadoPublico.php");
+include("encabezadoPrivado.php");
 ?>
 
 <div style="float:left; width:100%; text-align:center; background-color:#FFFFFF;">
@@ -17,9 +20,17 @@ include("encabezadoPublico.php");
 <a href="./logout.php"><button type="button">Logout</button></a>
 <br>
 
-<h1 style = "text-align:center;">Esta informacion es PUBLICA</h1>
+<?php
+if (!isset($usuario_login)){
+	 echo "No se puede mostrar la informacion";
+	}
+	else {
+		echo '<h1 style = "text-align:center;">Esta informacion es PRIVADA</h1>';
+	}
+?>
 
-<img style="height:400;" src=".\img\atat.jpg" >
+<img style="height:400;" src=".\img\deathstar_planes.jpg" >
+
 </div>
 
 <?php

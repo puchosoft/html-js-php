@@ -11,10 +11,12 @@
    $usuario_login = $registro['usuario']; // Extrae del array el campo 'usuario', 'nombre' y 'apellido'
    $nombre_login = $registro['nombre'];
    $apellido_login = $registro['apellido'];
+   $avatar_login = $registro['usuario'].".png";
    
-   
+     
    if(!isset($_SESSION['usuario_login'])){ // Si no hay sesion abierta ... va a login.php
       
 	  header("location:login.php");
    }
+  
 ?>
