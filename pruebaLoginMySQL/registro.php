@@ -26,9 +26,9 @@
 				$query = "INSERT INTO cuentas (nombre, apellido, usuario, clave, activo) VALUES ('$mi_nombre', '$mi_apellido', '$mi_usuario', md5('$mi_clave1'), TRUE)";
 				// Escribe la nueva cuenta de usuario en la BD 
 				mysqli_query($db,$query);
-				//echo '<h1 style="text-align:center;">La cuenta fue registrada correctamente</h1>';
 				$error = "La cuenta fue registrada correctamente";
-				header('Refresh: 3; URL = login.php');
+				header('Refresh: 2; URL = '.$_GET['volver']);
+				
 			} else {
 				$error = "El usuario ya existe";
 			}
@@ -67,7 +67,7 @@
 	
       <div align = "center">
          <div style = "position:relative; top:50px; width:300px; border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Regitro de nueva cuenta</b></div>
+            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Registro de nueva cuenta</b></div>
 				
             <div style = "margin:30px">
                

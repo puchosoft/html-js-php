@@ -20,7 +20,7 @@
       if($conteo == 1) {
 
          $_SESSION['usuario_login'] = $mi_usuario; // Abre sesion 
-         header("location: privada.php"); // Vuelve a la pagina principal
+         header('location: '.$_GET['volver']); // Vuelve a la pagina principal
       }else {
          $error = "Usuario o clave invalidas";
       }
@@ -63,8 +63,8 @@
                   <label>Clave :</label><br><input type = "password" name = "clave" class = "box" /><br/><br />
                   <br>
 				  <input type = "submit" value = " Ingreso "/>
-				  <a style="float:right;" href="./registro.php"><button type="button"> Registro </button></a>
-				  <a style=";" href="./index.php"><button type="button"> Cancel </button></a>
+				  <a style="float:right;" href="./registro.php?volver=login.php"><button type="button"> Registro </button></a>
+				  <a style=";" href="index.php"><button type="button"> Cancel </button></a>
 				  <br />
                </form>
                <br>
